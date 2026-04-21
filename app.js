@@ -1,60 +1,61 @@
-// URL base del contenedor
-const BASE_URL = "https://raw.githubusercontent.com/FabiPaez/bolsos/main/bolsos/";
-
-// Catálogo simple (basado en nombres de archivos)
-const productos = [
-  {
-    nombre: "Bolso 1",
-    imagenes: ["bolso1-1.jpg", "bolso1-2.jpg"]
+const { createApp } = Vue;
+    return {
+      productos: [
+        {
+          nombre: "Bolso 1",
+          imagenes: ["bolso1-1.jpg", "bolso1-2.jpg"]
+        },
+        {
+          nombre: "Bolso 2",
+          imagenes: ["bolso2-1.jpg", "bolso2-2.jpg"]
+        }
+      ]
+    }
   },
-  {
-    nombre: "Bolso 2",
-    imagenes: ["bolso2-1.jpg", "bolso2-2.jpg"]
-  }
-];
+  methods: {
+    getImages(imgs) {
+      return imgs.map(i => BASE_URL + i);
+    },
+    whatsappLink(nombre) {
+      return `https://wa.me/549XXXXXXXXXX?text=Hola, me interesa ${encodeURIComponent(nombre)}`;
+    }
+  },
+  template: `
+  <v-app>
+    <v-app-bar color="black" dark>
+      <v-toolbar-title>Catálogo de Bolsos</v-toolbar-title>
+    </v-app-bar>
 
-const catalog = document.getElementById("catalog");
+    <v-container class="mt-5">
+      <v-row>
+        <v-col v-for="(prod, index) in productos" :key="index" cols="12" sm="6" md="4">
+          <v-card elevation="4">
 
-productos.forEach((prod) => {
-  const card = document.createElement("div");
-  card.className = "card";
+            <v-carousel height="300" hide-delimiters show-arrows="hover">
+              <v-carousel-item
+                v-for="(img, i) in getImages(prod.imagenes)"
+                :key="i"
+                :src="img"
+              ></v-carousel-item>
+            </v-carousel>
 
-  const carousel = document.createElement("div");
-  carousel.className = "carousel";
+            <v-card-title>{{ prod.nombre }}</v-card-title>
 
-  prod.imagenes.forEach((img, i) => {
-    const image = document.createElement("img");
-    image.src = BASE_URL + img;
-    if (i === 0) image.classList.add("active");
-    carousel.appendChild(image);
-    console.log(BASE_URL + img);
-  });
+            <v-card-actions>
+              <v-btn
+                color="green"
+                :href="whatsappLink(prod.nombre)"
+                target="_blank"
+                block
+              >
+                Consultar por WhatsApp
+              </v-btn>
+            </v-card-actions>
 
-  let current = 0;
-  setInterval(() => {
-    const imgs = carousel.querySelectorAll("img");
-    imgs[current].classList.remove("active");
-    current = (current + 1) % imgs.length;
-    imgs[current].classList.add("active");
-  }, 3000);
-
-  const content = document.createElement("div");
-  content.className = "card-content";
-
-  const title = document.createElement("h3");
-  title.textContent = prod.nombre;
-
-  const btn = document.createElement("a");
-  btn.className = "btn";
-  btn.href = `https://wa.me/549XXXXXXXXXX?text=Hola, me interesa ${encodeURIComponent(prod.nombre)}`;
-  btn.target = "_blank";
-  btn.textContent = "Consultar por WhatsApp";
-
-  content.appendChild(title);
-  content.appendChild(btn);
-
-  card.appendChild(carousel);
-  card.appendChild(content);
-
-  catalog.appendChild(card);
-});
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app>
+  `
+}).use(vuetify).mount('#app');
