@@ -27,6 +27,7 @@ productos.forEach((prod) => {
     image.src = BASE_URL + img;
     if (i === 0) image.classList.add("active");
     carousel.appendChild(image);
+    console.log(BASE_URL + img);
   });
 
   let current = 0;
