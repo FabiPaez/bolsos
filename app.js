@@ -1,5 +1,5 @@
 // URL base del contenedor
-const BASE_URL = "https://fabipaez.github.io/bolsos/bolsos/";
+const BASE_URL = "https://raw.githubusercontent.com/FabiPaez/bolsos/main/bolsos/";
 
 // Catálogo simple (basado en nombres de archivos)
 const productos = [
