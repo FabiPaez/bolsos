@@ -72,7 +72,7 @@ createApp({
       </v-toolbar-title>
     </v-app-bar>
     <v-main>
-      <v-container "mt-6">
+      <v-container "class=mt-6">
         <div class="hero-title">
            Bolsos que enamoran  
         </div>
