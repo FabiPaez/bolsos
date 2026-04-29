@@ -1,58 +1,92 @@
+/* === BASE GENERAL === */
 body {
-  font-family: Arial;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #fdfbfb 0%, #f7e8ec 100%);
+  color: #5a4a4a;
 }
 
+/* === HEADER === */
 header {
-  background: #111;
-  color: #fff;
-  padding: 1rem;
+  background: linear-gradient(90deg, #fbc2eb, #fad0c4);
+  color: #4a2c2a;
+  padding: 1.2rem;
   text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
+/* === CONTENEDOR === */
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 
+/* === GRID === */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
+/* === TARJETAS === */
 .card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* === IMAGEN === */
 .card img {
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
 
+/* === CONTENIDO === */
 .card-content {
   padding: 15px;
 }
 
-.btn {
+.card-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6b4c57;
+}
+
+/* === BOTÓN (WHATSAPP FEMENINO) === */
+.btn, .whatsapp-btn {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 15px;
-  background: #25D366;
-  color: #fff;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  color: #4a2c2a;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
+.btn:hover, .whatsapp-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
+}
+
+/* === CAROUSEL === */
 .carousel {
   position: relative;
   height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .carousel img {
@@ -66,4 +100,20 @@ header {
 
 .carousel img.active {
   opacity: 1;
+}
+
+/* === DETALLES EXTRA (TOQUE FEMENINO) === */
+.title-bar {
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #7a5c61;
+}
+
+/* Opcional: efecto suave en links */
+a {
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #d48ca3;
 }
