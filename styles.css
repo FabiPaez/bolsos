@@ -16,6 +16,32 @@ header {
   letter-spacing: 1px;
 }
 
+.title-bar {
+  font-weight: 600;
+  letter-spacing: 1px; 
+  font-size: 1.2rem;
+}
+
+.hero-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #6b4c57;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  animation: fadeInUp 1s ease;
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #a07a86;
+  margin-bottom: 30px;
+  animation: fadeInUp 1.5s ease;
+}
+
+
 /* === CONTENEDOR === */
 .container {
   max-width: 1200px;
@@ -39,9 +65,20 @@ header {
   transition: all 0.3s ease;
 }
 
-.card:hover {
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.title-style {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #6b4c57;
+  letter-spacing: 0.5px;
 }
 
 /* === IMAGEN === */
@@ -54,6 +91,7 @@ header {
 /* === CONTENIDO === */
 .card-content {
   padding: 15px;
+  margin: 5px;
 }
 
 .card-content h3 {
@@ -63,20 +101,15 @@ header {
 }
 
 /* === BOTÓN (WHATSAPP FEMENINO) === */
-.btn, .whatsapp-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
+.whatsapp-btn {
   background: linear-gradient(45deg, #ff9a9e, #fad0c4);
   color: #4a2c2a;
-  text-decoration: none;
-  border-radius: 10px;
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
 }
 
-.btn:hover, .whatsapp-btn:hover {
+.whatsapp-btn:hover {
   transform: scale(1.05);
   background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
 }
@@ -103,11 +136,7 @@ header {
 }
 
 /* === DETALLES EXTRA (TOQUE FEMENINO) === */
-.title-bar {
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #7a5c61;
-}
+
 
 /* Opcional: efecto suave en links */
 a {
@@ -115,5 +144,22 @@ a {
 }
 
 a:hover {
-  color: #d48ca3;
+  color: #a84061;
+}
+
+/* keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.v-carousel {
+  border-radius: 12px;
+  overflow: hidden;
 }
