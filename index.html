@@ -3,33 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catálogo de Bolsos</title>
-
-  <!-- Vuetify CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.0/dist/vuetify.min.css" rel="stylesheet">
-
-  <!-- Material Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="./styles.css">
-
+  <meta name="description" content="Bossa, boutique femenina de bolsos, carteras, mochilas y accesorios premium en ecocuero. Venta online, encargues y envios en San Juan." />
+  <meta name="theme-color" content="#f7efe9" />
+  <meta property="og:title" content="Bossa | Boutique femenina premium" />
+  <meta property="og:description" content="Bolsos, carteras, mochilas y accesorios con estetica calida, elegante y moderna." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=80" />
+  <title>Bossa | Boutique femenina premium</title>
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://images.pexels.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="loading" id="loading" aria-hidden="true">
+    <span>Bossa</span>
+  </div>
 
-<div id="app"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Inicio Bossa">Bossa</a>
+    <nav class="desktop-nav" aria-label="Navegacion principal">
+      <a href="#catalogo">Catalogo</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#envios">Envios</a>
+      <a href="#admin">Admin</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="searchToggle" aria-label="Buscar productos" title="Buscar">Buscar</button>
+      <button class="cart-button" id="cartToggle" aria-label="Abrir carrito">
+        Carrito <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
 
-<!-- Vue 3 -->
-<script src="https://unpkg.com/vue@3" defer></script>
+  <main>
+    <section class="hero reveal">
+      <div class="hero-media" role="img" aria-label="Bolso femenino premium sobre fondo editorial"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Boutique femenina de accesorios</p>
+        <h1>Bossa</h1>
+        <p>Bolsos, carteras y mochilas de ecocuero con seleccion curada, entrega local y pedidos por encargue.</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#catalogo">Ver coleccion</a>
+          <a class="secondary-link" href="#admin">Editar catalogo</a>
+        </div>
+      </div>
+    </section>
 
-<!-- Vuetify -->
-<script src="https://cdn.jsdelivr.net/npm/vuetify@3.5.0/dist/vuetify.min.js" defer></script>
+    <section class="promo-strip reveal" aria-label="Promociones">
+      <span>Nuevo ingreso semanal</span>
+      <span>Pedidos entre 5 y 8 dias habiles</span>
+      <span>Entregas en San Juan Capital y Jachal centro</span>
+      <span>Checkout por WhatsApp</span>
+    </section>
 
-<!-- App -->
-<script src="app.js" defer></script>
+    <section class="section intro-grid reveal">
+      <div>
+        <p class="eyebrow">Una experiencia mas premium</p>
+        <h2>Accesorios elegidos para elevar lo cotidiano.</h2>
+      </div>
+      <p>Bossa reune marroquineria femenina, pantuflas, lenceria, pijamas, camperas, gafas, cintos y perfumes en una vidriera online rapida, clara y lista para vender sin pagos integrados.</p>
+    </section>
 
+    <section class="category-wall reveal" id="categorias" aria-label="Categorias destacadas">
+      <article>
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80" alt="Cartera estructurada" loading="lazy">
+        <div><span>Carteras</span><strong>Lineas sofisticadas</strong></div>
+      </article>
+      <article>
+        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=80" alt="Bolso de mano" loading="lazy">
+        <div><span>Bolsos</span><strong>Uso diario premium</strong></div>
+      </article>
+      <article>
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80" alt="Accesorio femenino" loading="lazy">
+        <div><span>Accesorios</span><strong>Detalles que completan</strong></div>
+      </article>
+    </section>
+
+    <section class="toolbar section reveal" id="catalogo">
+      <div>
+        <p class="eyebrow">Catalogo boutique</p>
+        <h2>Seleccion destacada</h2>
+      </div>
+      <div class="filters" id="filters"></div>
+    </section>
+
+    <section class="search-panel" id="searchPanel" aria-label="Busqueda de productos">
+      <input id="searchInput" type="search" placeholder="Buscar por nombre, categoria o estilo..." aria-label="Buscar productos">
+    </section>
+
+    <div id="catalogSections" class="catalog-sections"></div>
+
+    <section class="section split-feature reveal" id="ofertas">
+      <div class="feature-image"></div>
+      <div class="feature-copy">
+        <p class="eyebrow">Ofertas y rebajas</p>
+        <h2>Promos pensadas para comprar mejor, no mas rapido.</h2>
+        <p>Productos seleccionados con descuento, stock visible y resumen transparente antes de enviar el pedido por WhatsApp.</p>
+        <a class="primary-link" href="#catalogo" data-filter-link="Ofertas">Ver ofertas</a>
+      </div>
+    </section>
+
+    <section class="benefits reveal" id="envios">
+      <article><span>01</span><strong>Venta online</strong><p>El catalogo funciona como vidriera y toma de pedidos.</p></article>
+      <article><span>02</span><strong>Por encargue</strong><p>Pedidos estimados entre 5 y 8 dias habiles.</p></article>
+      <article><span>03</span><strong>Entrega local</strong><p>San Juan Capital y Jachal centro, con envios disponibles.</p></article>
+      <article><span>04</span><strong>Atencion directa</strong><p>El pedido se confirma con mensaje profesional de WhatsApp.</p></article>
+    </section>
+
+    <section class="section social-proof reveal">
+      <div>
+        <p class="eyebrow">Comunidad</p>
+        <h2>Un catalogo con mirada editorial y venta simple.</h2>
+      </div>
+      <div class="testimonials">
+        <blockquote>"La cartera llego impecable y el asesoramiento fue super claro."</blockquote>
+        <blockquote>"Me encanto poder ver ofertas, stock y cerrar todo por WhatsApp."</blockquote>
+        <blockquote>"Bossa tiene esa estetica delicada que estaba buscando."</blockquote>
+      </div>
+    </section>
+
+    <section class="faq reveal">
+      <details open>
+        <summary>Cuanto demora mi pedido?</summary>
+        <p>Los pedidos por encargue llegan entre 5 y 8 dias habiles desde la fecha de pedido.</p>
+      </details>
+      <details>
+        <summary>Donde entregan?</summary>
+        <p>Entregas en San Juan Capital y Jachal centro. Tambien se pueden coordinar envios.</p>
+      </details>
+      <details>
+        <summary>Como se paga?</summary>
+        <p>Por ahora el sitio arma el pedido y lo envia por WhatsApp. La forma de pago se coordina con la tienda.</p>
+      </details>
+    </section>
+
+    <section class="admin section reveal" id="admin">
+      <div class="admin-heading">
+        <div>
+          <p class="eyebrow">Administracion simple</p>
+          <h2>Editar catalogo sin tocar codigo.</h2>
+        </div>
+        <button class="secondary-link" id="resetCatalog">Restaurar demo</button>
+      </div>
+      <form class="admin-form" id="productForm">
+        <input type="hidden" id="productId">
+        <label>Nombre<input id="adminName" required placeholder="Cartera Roma"></label>
+        <label>Categoria<input id="adminCategory" required placeholder="Carteras"></label>
+        <label>Precio<input id="adminPrice" required type="number" min="0" step="100" placeholder="69000"></label>
+        <label>Descuento %<input id="adminDiscount" type="number" min="0" max="90" step="1" placeholder="15"></label>
+        <label>Stock<input id="adminStock" type="number" min="0" step="1" placeholder="4"></label>
+        <label>Imagenes (URLs separadas por coma)<textarea id="adminImages" required rows="3" placeholder="https://..."></textarea></label>
+        <label class="check"><input id="adminFeatured" type="checkbox"> Destacado</label>
+        <label class="check"><input id="adminOffer" type="checkbox"> En oferta</label>
+        <div class="admin-actions">
+          <button class="primary-link" type="submit">Guardar producto</button>
+          <button class="secondary-link" type="button" id="clearForm">Limpiar</button>
+          <button class="secondary-link" type="button" id="exportCatalog">Exportar JSON</button>
+        </div>
+      </form>
+      <div class="admin-list" id="adminList"></div>
+    </section>
+  </main>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="cart-head">
+      <div>
+        <p class="eyebrow">Pedido</p>
+        <h2>Tu carrito</h2>
+      </div>
+      <button class="icon-button" id="closeCart" aria-label="Cerrar carrito">Cerrar</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <div><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
+      <div><span>Descuentos</span><strong id="cartDiscount">$0</strong></div>
+      <div class="total"><span>Total</span><strong id="cartTotal">$0</strong></div>
+      <a class="whatsapp-checkout" id="checkoutWhatsapp" target="_blank" rel="noreferrer">Finalizar pedido por WhatsApp</a>
+    </div>
+  </aside>
+
+  <footer class="footer">
+    <div>
+      <a class="brand" href="#top">Bossa</a>
+      <p>Boutique femenina de bolsos, carteras, mochilas y accesorios.</p>
+    </div>
+    <div>
+      <strong>Contacto</strong>
+      <a href="https://wa.me/5492640000000" target="_blank" rel="noreferrer">WhatsApp</a>
+      <a href="#admin">Administrar catalogo</a>
+    </div>
+    <div>
+      <strong>Compra</strong>
+      <span>Venta online</span>
+      <span>Stock inmediato</span>
+      <span>Productos por encargue</span>
+    </div>
+  </footer>
+
+  <script src="./app.js" defer></script>
 </body>
 </html>
